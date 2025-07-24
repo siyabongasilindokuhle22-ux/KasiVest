@@ -51,17 +51,18 @@ to update the personal task stage manually when they finish it
 Configuration
 =============
 
-The task stages "Done" and "Canceled" must match the same name as the
+The task stages "Done" and "Cancelled" must match the same name as the
 equivalent personal stages.
 
-The checkbox “Closing stage” must be checked in the stage configuration.
+The checkbox “Folded in Kanban” must be checked in the stage
+configuration.
 
 Usage
 =====
 
 1. Go to Projects > Select one > Select a task assigned to you
-2. Change the stage to Done or to Canceled
-3. Go to My Tasks > Select the same task
+2. Change the stage to Done or to Cancelled
+3. Go to Tasks > My Tasks > Select the same task
 4. As you can see, the personal stage has also changed
 
 Bug Tracker
@@ -105,6 +106,20 @@ This module is maintained by the OCA.
 OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
+
+.. |maintainer-Shide| image:: https://github.com/Shide.png?size=40px
+    :target: https://github.com/Shide
+    :alt: Shide
+.. |maintainer-Andrii9090| image:: https://github.com/Andrii9090.png?size=40px
+    :target: https://github.com/Andrii9090
+    :alt: Andrii9090
+.. |maintainer-rafaelbn| image:: https://github.com/rafaelbn.png?size=40px
+    :target: https://github.com/rafaelbn
+    :alt: rafaelbn
+
+Current `maintainers <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-Shide| |maintainer-Andrii9090| |maintainer-rafaelbn| 
 
 This module is part of the `OCA/project <https://github.com/OCA/project/tree/18.0/project_task_personal_stage_auto_fold>`_ project on GitHub.
 
