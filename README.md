@@ -23,6 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [project_department](project_department/) | 18.0.1.0.0 |  | Project Department Categorization
 [project_key](project_key/) | 18.0.1.0.0 |  | Module decorates projects and tasks with Project Key
+[project_merge](project_merge/) | 18.0.1.0.0 |  | Wizard to merge project tasks
 [project_milestone_status](project_milestone_status/) | 18.0.1.0.0 | <a href='https://github.com/lbarry-apsl'><img src='https://github.com/lbarry-apsl.png' width='32' height='32' style='border-radius:50%;' alt='lbarry-apsl'/></a> | Project Milestone Status
 [project_parent](project_parent/) | 18.0.1.0.0 |  | Project Parent
 [project_parent_task_filter](project_parent_task_filter/) | 18.0.1.0.0 |  | Add a filter to show the parent tasks
