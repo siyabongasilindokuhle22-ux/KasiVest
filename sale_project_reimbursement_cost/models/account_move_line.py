@@ -19,10 +19,12 @@ class AccountMoveLine(models.Model):
             provision_product = line.product_id.provision_product_id
             sale_lines = map_sale_line_per_move.get(line.id) or []
             for sale_line in sale_lines:
-                analytic_account_id = sale_line.order_id.analytic_account_id
+                distribution_analytic_account_ids = (
+                    sale_line.distribution_analytic_account_ids
+                )
                 provision_data = AnalyticLine.read_group(
                     [
-                        ("account_id", "=", analytic_account_id.id),
+                        ("account_id", "in", distribution_analytic_account_ids.ids),
                         ("product_id", "=", provision_product.id),
                     ],
                     fields=["product_id", "amount:sum"],
@@ -32,7 +34,11 @@ class AccountMoveLine(models.Model):
                     continue
                 sale_reimbursement_data = SaleLine.read_group(
                     [
-                        ("order_id.analytic_account_id", "=", analytic_account_id.id),
+                        (
+                            "distribution_analytic_account_ids",
+                            "in",
+                            distribution_analytic_account_ids.ids,
+                        ),
                         ("product_id", "=", line.product_id.id),
                         ("id", "!=", sale_line.id),
                         ("is_expense", "=", True),
@@ -63,6 +69,10 @@ class AccountMoveLine(models.Model):
                     "product_uom_qty": -1,
                     "order_id": sale_line.order_id.id,
                     "is_expense": False,
+                    "qty_invoiced": 1,
                 }
-                sale_line.copy(default_values)
+                new_sale_line = sale_line.copy(default_values)
+                new_sale_line.write(
+                    {"analytic_distribution": sale_line.analytic_distribution or False}
+                )
         return map_sale_line_per_move

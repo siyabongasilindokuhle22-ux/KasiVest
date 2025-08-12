@@ -91,7 +91,7 @@ class TestReimbursementCost(AccountTestInvoicingCommon):
         customer_invoice = self.sale_order._create_invoices()
         customer_invoice.action_post()
         self.assertTrue(self.sol_task.task_id)
-        self.assertTrue(self.sale_order.analytic_account_id)
+        self.assertTrue(self.sale_order.order_line.distribution_analytic_account_ids)
         project = self.sol_task.task_id.project_id
         provision_items, reimbursement_items = _get_provision_and_reimbursement(project)
         self.assertEqual(len(reimbursement_items), 0)
@@ -100,7 +100,7 @@ class TestReimbursementCost(AccountTestInvoicingCommon):
         # generate the reimbursement
         self.bill_1.invoice_line_ids.write(
             {
-                "analytic_distribution": {project.analytic_account_id.id: 100},
+                "analytic_distribution": {project.account_id.id: 100},
                 "price_unit": 400,
                 "quantity": 1,
             }
@@ -137,7 +137,7 @@ class TestReimbursementCost(AccountTestInvoicingCommon):
         new_bill.invoice_date = "2024-01-01"
         new_bill.invoice_line_ids.write(
             {
-                "analytic_distribution": {project.analytic_account_id.id: 100},
+                "analytic_distribution": {project.account_id.id: 100},
                 "price_unit": 600,
                 "quantity": 1,
             }
@@ -185,7 +185,7 @@ class TestReimbursementCost(AccountTestInvoicingCommon):
         new_bill.invoice_date = "2024-01-01"
         new_bill.invoice_line_ids.write(
             {
-                "analytic_distribution": {project.analytic_account_id.id: 100},
+                "analytic_distribution": {project.account_id.id: 100},
                 "price_unit": 100,
                 "quantity": 1,
             }

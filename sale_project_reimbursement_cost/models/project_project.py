@@ -16,7 +16,7 @@ class ProjectProject(models.Model):
         }
 
     def _get_provision_items(self):
-        if not self.user_has_groups("project.group_project_user"):
+        if not self.env.user.has_group("project.group_project_user"):
             return []
         provision_items = self.get_provision_items_data()
         reimbursement_items = self.get_reimbursement_items_data()
@@ -99,7 +99,7 @@ class ProjectProject(models.Model):
         provision_products = self.sudo()._get_provision_products()
         domain = [
             ("product_id", "in", provision_products.ids),
-            ("account_id", "=", self.analytic_account_id.id),
+            ("account_id", "=", self.account_id.id),
         ]
         return domain
 
