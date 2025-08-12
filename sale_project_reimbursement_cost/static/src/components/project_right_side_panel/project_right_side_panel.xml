@@ -59,9 +59,9 @@
                         <tr class="fw-bolder">
                             <td>Total</td>
                             <td />
-                            <td class="text-end"><t
-                                    t-out="formatMonetary(total_provision)"
-                                /></td>
+                            <td class="text-end">
+                                <t t-out="formatMonetary(total_provision)" />
+                            </td>
                         </tr>
                     </tfoot>
                 </table>
