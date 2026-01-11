@@ -43,8 +43,6 @@ class ProjectTask(models.Model):
             return True
 
         new_stage = self.env["project.task.type"].browse(stage_id)
-        if not new_stage:
-            return True
 
         for task in self:
             if not self._is_move_allowed(task, new_stage, self.env.user):

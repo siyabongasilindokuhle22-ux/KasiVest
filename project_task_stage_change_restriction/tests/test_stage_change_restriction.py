@@ -55,17 +55,26 @@ class TestStageChangeRestriction(BaseCommon):
         )
 
         Stage = env["project.task.type"].with_user(SUPERUSER_ID).create
-        cls.stage_free = Stage({"name": "Free"})
+        cls.stage_free = Stage({"name": "Free", "project_ids": [(4, cls.project.id)]})
         cls.stage_assigned = Stage(
-            {"name": "Assigned Only", "allow_assigned_only": True}
+            {
+                "name": "Assigned Only",
+                "allow_assigned_only": True,
+                "project_ids": [(4, cls.project.id)],
+            }
         )
         cls.stage_pm = Stage(
-            {"name": "Project Manager Only", "allow_project_manager": True}
+            {
+                "name": "Project Manager Only",
+                "allow_project_manager": True,
+                "project_ids": [(4, cls.project.id)],
+            }
         )
         cls.stage_group = Stage(
             {
                 "name": "Sales Only",
                 "allow_group_ids": [(6, 0, [cls.grp_sales_admin.id])],
+                "project_ids": [(4, cls.project.id)],
             }
         )
         cls.stage_assigned_or_pm = Stage(
@@ -73,6 +82,7 @@ class TestStageChangeRestriction(BaseCommon):
                 "name": "Assigned OR PM",
                 "allow_assigned_only": True,
                 "allow_project_manager": True,
+                "project_ids": [(4, cls.project.id)],
             }
         )
         cls.stage_assigned_or_group = Stage(
@@ -80,6 +90,7 @@ class TestStageChangeRestriction(BaseCommon):
                 "name": "Assigned OR Sales",
                 "allow_assigned_only": True,
                 "allow_group_ids": [(6, 0, [cls.grp_sales_admin.id])],
+                "project_ids": [(4, cls.project.id)],
             }
         )
         cls.stage_pm_or_group = Stage(
@@ -87,6 +98,7 @@ class TestStageChangeRestriction(BaseCommon):
                 "name": "PM OR Sales",
                 "allow_project_manager": True,
                 "allow_group_ids": [(6, 0, [cls.grp_sales_admin.id])],
+                "project_ids": [(4, cls.project.id)],
             }
         )
 
