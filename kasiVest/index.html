@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kasiVest | Compound Quietly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+<header>
+  <h1>kasiVest</h1>
+  <p>Build Wealth. Build Discipline. Build Legacy.</p>
+  <button onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Join the Movement</button>
+</header>
+
+<main>
+  <!-- Philosophy Section -->
+  <section>
+    <h2>The Philosophy</h2>
+    <p>Wealth is built slowly. Discipline beats hype. Compounding rewards patience.</p>
+  </section>
+
+  <!-- Method Section -->
+  <section>
+    <h2>The Method</h2>
+    <div class="features">
+      <div class="card"><strong>Start Small</strong><p>Even $5 can grow over time.</p></div>
+      <div class="card"><strong>Stay Consistent</strong><p>Small, repeated actions compound into big results.</p></div>
+      <div class="card"><strong>Track Progress</strong><p>Visualize your growth and earn milestones.</p></div>
+    </div>
+  </section>
+
+  <!-- Join Section -->
+  <section id="signup">
+    <h2>Join the Movement</h2>
+    <form onsubmit="subscribe(event)">
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <button type="submit">Join Free</button>
+    </form>
+    <p id="thankyou" style="color:#10b981;margin-top:15px;"></p>
+  </section>
+
+  <!-- Dashboard Simulation -->
+  <section>
+    <h2>Your Wealth Dashboard (Simulated)</h2>
+    <div class="dashboard">
+      <div class="card">
+        <h3>Weekly Goal</h3>
+        <p>$<span id="goal">50</span></p>
+        <button onclick="incrementGoal()">Log Weekly Saving</button>
+      </div>
+      <div class="card">
+        <h3>Streak</h3>
+        <p id="streak">0</p> weeks</p>
+      </div>
+      <div class="card">
+        <h3>Milestones</h3>
+        <div id="badges"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2026 kasiVest. All rights reserved.
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
